@@ -27,7 +27,7 @@ describe('ReentrancyGuard', function () {
         gasLimit: 50000,
       });
     });
-    it('Should revert when attemt to call withdraw again', async function () {
+    it('Should revert when attacker try to call withdraw again', async function () {
       await expectError('failed to transfer ETH', async () => {
         await this.attacker.attackReentrancyGuard.exploit();
       });
