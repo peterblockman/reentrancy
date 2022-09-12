@@ -1,13 +1,9 @@
-# Sample Hardhat Project
+# Introduction
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
-
+This is the github repo for my article: [Smart contract security: an illustrated guide to Re-entrancy Attack](https://peterblockman.hashnode.dev/smart-contract-security-an-illustrated-guide-to-re-entrancy-attack)
+  
+## Quick start 
 ```shell
-npx hardhat help
+npm i
 npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
 ```
