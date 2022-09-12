@@ -4,6 +4,8 @@ export type Contract = EthersContract;
 export type ContractNameKey =
   | 'bank'
   | "attack"
+  | "bankReentrancyGuard"
+  | "attackReentrancyGuard"
 
 
 export type Contracts = Record<ContractNameKey, Contract>;

@@ -28,13 +28,14 @@ describe("Reentrancy", function () {
     })
     it("Should drain all the funds ", async function(){
       const balanceBefore= await waffle.provider.getBalance(this.contracts.bank.address)
-      expect(balanceBefore).to.eq(ethers.utils.parseEther("10"))
 
+      expect(balanceBefore).to.eq(ethers.utils.parseEther("10"))
       await this.attacker.attack.exploit()
     
       const balanceAfter = await waffle.provider.getBalance(this.contracts.bank.address)
 
       expect(balanceAfter).to.eq(ethers.utils.parseEther("0"))
+
     })
   })
 });

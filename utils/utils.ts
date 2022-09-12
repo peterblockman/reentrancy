@@ -88,10 +88,14 @@ export async function deployContracts(): Promise<{
 }> {
   const bank = await deployContract('Bank');
   const attack = await deployContract('Attack', bank.address);
+  const bankReentrancyGuard = await deployContract("BankReentrancyGuard")
+  const attackReentrancyGuard = await deployContract("AttackReentrancyGuard", bankReentrancyGuard.address)
   return {
     contracts: {
       bank,
-      attack
+      attack,
+      bankReentrancyGuard,
+      attackReentrancyGuard
     },
   };
 }
