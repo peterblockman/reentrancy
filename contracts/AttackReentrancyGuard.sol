@@ -3,7 +3,7 @@ pragma solidity ^0.8.16;
 
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
-import "@openzeppelin/contracts/utils/Address.sol";
+import '@openzeppelin/contracts/utils/Address.sol';
 import 'hardhat/console.sol';
 
 interface IBank {
@@ -31,9 +31,9 @@ contract AttackReentrancyGuard is Ownable {
         _transferOwnership(newOwner);
     }
 
-    receive() external payable{
+    receive() external payable {
         // check if the caller is a contract, so we can deposit ether
-        if(address(bank).balance >= 1 ether && msg.sender.isContract()){
+        if (address(bank).balance >= 1 ether && msg.sender.isContract()) {
             bank.withdraw();
         }
     }

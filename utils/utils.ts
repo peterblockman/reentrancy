@@ -2,12 +2,7 @@ import { expect } from 'chai';
 import { Contract } from 'ethers';
 import { ethers, getUnnamedAccounts } from 'hardhat';
 
-import {
-  TestFixtures,
-  User,
-  Contracts,
-  ContractNameKey,
-} from './interface';
+import { TestFixtures, User, Contracts, ContractNameKey } from './interface';
 export const expectError = async function (message: string, fn: Function) {
   if (!(message.length > 0))
     throw new Error('Message must not be an empty string');
@@ -27,10 +22,9 @@ export const expectError = async function (message: string, fn: Function) {
   }
 };
 
-
 export async function setupUser(
   contracts: Contracts,
-  address: string,
+  address: string
 ): Promise<User> {
   const user = {
     address,
@@ -88,14 +82,17 @@ export async function deployContracts(): Promise<{
 }> {
   const bank = await deployContract('Bank');
   const attack = await deployContract('Attack', bank.address);
-  const bankReentrancyGuard = await deployContract("BankReentrancyGuard")
-  const attackReentrancyGuard = await deployContract("AttackReentrancyGuard", bankReentrancyGuard.address)
+  const bankReentrancyGuard = await deployContract('BankReentrancyGuard');
+  const attackReentrancyGuard = await deployContract(
+    'AttackReentrancyGuard',
+    bankReentrancyGuard.address
+  );
   return {
     contracts: {
       bank,
       attack,
       bankReentrancyGuard,
-      attackReentrancyGuard
+      attackReentrancyGuard,
     },
   };
 }
@@ -110,4 +107,3 @@ export const createTestFixtures = async (): Promise<TestFixtures> => {
     users,
   };
 };
-
